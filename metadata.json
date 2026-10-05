@@ -1,0 +1,6 @@
+{
+  "name": "Conecta - Relacionamentos Reais e Autênticos",
+  "description": "Plataforma moderna de encontros e conexões autênticas para pessoas adultas encontrarem parceiros compatíveis com segurança, elegância e afinidade real.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
