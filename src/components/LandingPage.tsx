@@ -6,11 +6,12 @@ import {
   MessageSquare, 
   CheckCircle, 
   Lock, 
-  ArrowRight,
-  Flame,
-  ChevronRight,
-  Users
+  ArrowRight, 
+  Flame, 
+  ChevronRight, 
+  Users 
 } from 'lucide-react';
+import { heroCoupleImg } from '../data/mockData';
 
 interface LandingPageProps {
   onRegister: () => void;
@@ -95,7 +96,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 {/* Hero Card Container */}
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 bg-white">
                   <img
-                    src="/src/assets/images/hero_dating_couple_1791225929622.jpg"
+                    src={heroCoupleImg}
                     alt="Casal feliz conversando em um café ao ar livre"
                     referrerPolicy="no-referrer"
                     className="w-full h-[380px] sm:h-[440px] object-cover object-center"

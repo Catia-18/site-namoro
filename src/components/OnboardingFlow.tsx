@@ -12,7 +12,7 @@ import {
   ShieldCheck,
   Plus
 } from 'lucide-react';
-import { ALL_INTERESTS_LIST } from '../data/mockData';
+import { ALL_INTERESTS_LIST, userCurrentGabrielImg, profileMateusImg } from '../data/mockData';
 
 interface OnboardingFlowProps {
   onComplete: () => void;
@@ -27,8 +27,8 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
 
   // Step 1 state
   const [photos, setPhotos] = useState<string[]>([
-    '/src/assets/images/user_current_gabriel_1791225982293.jpg',
-    '/src/assets/images/profile_mateus_card_1791225950793.jpg',
+    userCurrentGabrielImg,
+    profileMateusImg,
   ]);
   const [name, setName] = useState('Gabriel Souza');
   const [age, setAge] = useState(28);

@@ -1,5 +1,24 @@
 import { UserProfile, Conversation, ReceivedLike, AppNotification, FilterState } from '../types';
 
+// Direct ES module imports to guarantee bundling and production asset resolution
+import heroCoupleImg from '../assets/images/hero_dating_couple_1791225929622.jpg';
+import profileAnaImg from '../assets/images/profile_ana_card_1791225941260.jpg';
+import profileBeatrizImg from '../assets/images/profile_beatriz_card_1791225991521.jpg';
+import profileCarolinaImg from '../assets/images/profile_carolina_card_1791225961005.jpg';
+import profileLucasImg from '../assets/images/profile_lucas_card_1791225970022.jpg';
+import profileMateusImg from '../assets/images/profile_mateus_card_1791225950793.jpg';
+import userCurrentGabrielImg from '../assets/images/user_current_gabriel_1791225982293.jpg';
+
+export {
+  heroCoupleImg,
+  profileAnaImg,
+  profileBeatrizImg,
+  profileCarolinaImg,
+  profileLucasImg,
+  profileMateusImg,
+  userCurrentGabrielImg,
+};
+
 export const CURRENT_USER: UserProfile = {
   id: 'user_current',
   name: 'Gabriel',
@@ -11,9 +30,9 @@ export const CURRENT_USER: UserProfile = {
   location: 'Pinheiros, São Paulo - SP',
   bio: 'Apaixonado por design minimalista, café coado de manhã e finais de semana explorando novas cafeterias e feiras de arte. Adoro cozinhar um bom risoto com uma taça de vinho e boas conversas.',
   photos: [
-    '/src/assets/images/user_current_gabriel_1791225982293.jpg',
-    '/src/assets/images/profile_mateus_card_1791225950793.jpg',
-    '/src/assets/images/hero_dating_couple_1791225929622.jpg',
+    userCurrentGabrielImg,
+    profileMateusImg,
+    heroCoupleImg,
   ],
   interests: ['Café Especial', 'Arquitetura', 'Gastronomia', 'Vinho', 'Cinema Francês', 'Corrida', 'Fotografia Analógica'],
   relationshipGoal: 'relacionamento-serio',
@@ -44,8 +63,8 @@ export const DISCOVER_PROFILES: UserProfile[] = [
     location: 'Vila Madalena, São Paulo - SP',
     bio: 'Entre visitas a galerias e pausas para café sem pressa. Acredito que as melhores conexões acontecem quando rimos das mesmas bobagens e temos conversas profundas sobre livros e viagens.',
     photos: [
-      '/src/assets/images/profile_ana_card_1791225941260.jpg',
-      '/src/assets/images/profile_carolina_card_1791225961005.jpg',
+      profileAnaImg,
+      profileCarolinaImg,
     ],
     interests: ['Artes Visuais', 'Café Especial', 'Leitura', 'Exposições', 'Bossa Nova', 'Viagens Culturais'],
     relationshipGoal: 'relacionamento-serio',
@@ -74,8 +93,8 @@ export const DISCOVER_PROFILES: UserProfile[] = [
     location: 'Jardins, São Paulo - SP',
     bio: 'Rotina agitada no hospital, mas com tempo de sobra para quem faz o coração bater diferente. Amo trilhas no mato aos domingos, música ao vivo e experimentar novos restaurantes.',
     photos: [
-      '/src/assets/images/profile_beatriz_card_1791225991521.jpg',
-      '/src/assets/images/hero_dating_couple_1791225929622.jpg',
+      profileBeatrizImg,
+      heroCoupleImg,
     ],
     interests: ['Gastronomia', 'Trilhas', 'Música Indie', 'Vinho Tinto', 'Corrida de Rua', 'Podcast'],
     relationshipGoal: 'relacionamento-serio',
@@ -104,8 +123,8 @@ export const DISCOVER_PROFILES: UserProfile[] = [
     location: 'Itaim Bibi, São Paulo - SP',
     bio: 'Resolvo problemas de usabilidade de dia e crio ilustrações autorais à noite. Se você souber onde encontrar a melhor massa fresca da cidade, já começamos com 10 pontos.',
     photos: [
-      '/src/assets/images/profile_carolina_card_1791225961005.jpg',
-      '/src/assets/images/profile_ana_card_1791225941260.jpg',
+      profileCarolinaImg,
+      profileAnaImg,
     ],
     interests: ['Design', 'Massas Artesanais', 'Museus', 'Plantas', 'Cinema', 'Jazz Moderno'],
     relationshipGoal: 'relacionamento-serio',
@@ -134,8 +153,8 @@ export const DISCOVER_PROFILES: UserProfile[] = [
     location: 'Perdizes, São Paulo - SP',
     bio: 'Programo por profissão e corro maratonas por hobby. Procurando alguém com quem dividir boas histórias, piadas ruins e passeios no Ibirapuera.',
     photos: [
-      '/src/assets/images/profile_mateus_card_1791225950793.jpg',
-      '/src/assets/images/user_current_gabriel_1791225982293.jpg',
+      profileMateusImg,
+      userCurrentGabrielImg,
     ],
     interests: ['Tecnologia', 'Corrida', 'Café', 'Boardgames', 'Stand-up Comedy', 'Cerveja Artesanal'],
     relationshipGoal: 'relacionamento-serio',
@@ -164,8 +183,8 @@ export const DISCOVER_PROFILES: UserProfile[] = [
     location: 'Sumarezinho, São Paulo - SP',
     bio: 'A música conecta o que as palavras não alcançam. Coleciono discos de vinil, gosto de cozinhar ouvindo Caetano Veloso e aprecio conversas sinceras.',
     photos: [
-      '/src/assets/images/profile_lucas_card_1791225970022.jpg',
-      '/src/assets/images/profile_mateus_card_1791225950793.jpg',
+      profileLucasImg,
+      profileMateusImg,
     ],
     interests: ['Música Brasileira', 'Vinil', 'Cozinha Criativa', 'Teatro', 'Sustentabilidade', 'Acampamento'],
     relationshipGoal: 'relacionamento-serio',
@@ -340,7 +359,7 @@ export const INITIAL_NOTIFICATIONS: AppNotification[] = [
     message: 'Você e Ana Carolina se curtiram mutuamente.',
     timestamp: 'Há 12 min',
     read: false,
-    avatar: '/src/assets/images/profile_ana_card_1791225941260.jpg',
+    avatar: profileAnaImg,
     actionScreen: 'chat',
   },
   {
@@ -350,7 +369,7 @@ export const INITIAL_NOTIFICATIONS: AppNotification[] = [
     message: 'Ana enviou: "Adorei a sua recomendação! Aquela cafeteria..."',
     timestamp: 'Há 3 min',
     read: false,
-    avatar: '/src/assets/images/profile_ana_card_1791225941260.jpg',
+    avatar: profileAnaImg,
     actionScreen: 'chat',
   },
   {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { UserProfile } from '../types';
 import { X, Camera, Plus, Trash2, Check, Sparkles } from 'lucide-react';
-import { ALL_INTERESTS_LIST } from '../data/mockData';
+import { ALL_INTERESTS_LIST, heroCoupleImg } from '../data/mockData';
 
 interface EditProfileModalProps {
   isOpen: boolean;
@@ -124,8 +124,8 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
               {photos.length < 6 && (
                 <div
                   onClick={() => {
-                    // Duplicate first photo or placeholder for demo
-                    setPhotos([...photos, '/src/assets/images/hero_dating_couple_1791225929622.jpg']);
+                    // Add photo using imported asset
+                    setPhotos([...photos, heroCoupleImg]);
                   }}
                   className="aspect-[3/4] rounded-2xl border-2 border-dashed border-slate-300 hover:border-rose-400 bg-slate-50 flex flex-col items-center justify-center cursor-pointer text-slate-400 hover:text-rose-600 p-2 text-center transition-all"
                 >
