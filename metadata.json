@@ -1,6 +1,6 @@
 {
-  "name": "Conecta - Encontros e Conexões Reais em Angola",
-  "description": "A plataforma moderna de namoro e conexões autênticas feita para Angola. Encontre pessoas solteiras compatíveis em Luanda, Benguela e Huambo com elegância e segurança.",
+  "name": "Conecta - Amizades e Conexões Jovens em Angola",
+  "description": "A rede social jovem e divertida de Angola para fazer novos amigos, descobrir pessoas com as mesmas vibes, conversar e partilhar interesses com total segurança.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

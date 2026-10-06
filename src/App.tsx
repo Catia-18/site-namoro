@@ -93,7 +93,7 @@ export default function App() {
       // Trigger celebratory Match modal!
       setMatchedProfileForModal(user);
     } else {
-      showToast(`Você curtiu ${user.name}!`);
+      showToast(`Enviou uma vibe para ${user.name}! 💜`);
     }
   };
 
@@ -102,7 +102,7 @@ export default function App() {
   };
 
   const handleSuperLike = (user: UserProfile) => {
-    showToast(`Super Like enviado para ${user.name}! ⭐`);
+    showToast(`Super Vibe enviada para ${user.name}! 🌟`);
     // Treat as instant match
     if (!matches.some((m) => m.id === user.id)) {
       setMatches([user, ...matches]);
@@ -123,7 +123,7 @@ export default function App() {
 
   const handlePassLikeFromLikesView = (likeId: string) => {
     setLikesReceived(likesReceived.filter((l) => l.id !== likeId));
-    showToast('Perfil removido da lista de curtidas.');
+    showToast('Perfil dispensado suavemente.');
   };
 
   // Match Modal -> Chat trigger

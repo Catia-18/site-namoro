@@ -3,18 +3,17 @@ import { UserProfile } from '../types';
 import { 
   X, 
   Heart, 
-  XCircle, 
   Star, 
   MapPin, 
-  Briefcase, 
-  GraduationCap, 
+  BookOpen, 
   ShieldCheck, 
   Sparkles, 
-  Flag,
-  ChevronLeft,
-  ChevronRight,
-  Flame,
-  Info
+  Flag, 
+  ChevronLeft, 
+  ChevronRight, 
+  Music,
+  Smile,
+  Compass
 } from 'lucide-react';
 
 interface ProfileDetailModalProps {
@@ -55,8 +54,8 @@ export const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/70 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="bg-white rounded-3xl max-w-xl w-full shadow-2xl border border-slate-200/80 overflow-hidden flex flex-col max-h-[92vh] relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/70 backdrop-blur-md animate-in fade-in duration-200 font-sans">
+      <div className="bg-white rounded-3xl max-w-xl w-full shadow-2xl border border-purple-100 overflow-hidden flex flex-col max-h-[92vh] relative">
         
         {/* Floating Close Button */}
         <button
@@ -108,91 +107,94 @@ export const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
               </>
             )}
 
-            {/* Scrim overlay with basic name */}
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent p-6 text-white pointer-events-none">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="font-serif-display text-3xl font-bold">
-                  {user.name}, {user.age}
-                </span>
-                {user.verified && (
-                  <span className="bg-emerald-500 text-white p-1 rounded-full text-xs" title="Perfil Verificado">
-                    <ShieldCheck className="w-4 h-4" />
-                  </span>
-                )}
-              </div>
-              <div className="flex items-center gap-2 text-xs text-slate-200">
-                <MapPin className="w-3.5 h-3.5 text-rose-400" />
-                <span>{user.location} (a {user.distanceKm} km de você)</span>
-              </div>
+            {/* Compatibility Tag Floating */}
+            <div className="absolute bottom-4 left-4 z-10 bg-purple-950/85 backdrop-blur-md text-pink-200 px-3.5 py-1.5 rounded-2xl border border-pink-400/30 flex items-center gap-2 shadow-lg">
+              <Heart className="w-4 h-4 text-pink-400 fill-pink-400" />
+              <span className="text-xs font-bold">{user.compatibilityScore}% Química Romântica 💕</span>
             </div>
           </div>
 
           {/* Details Content */}
           <div className="p-6 space-y-6">
             
-            {/* Compatibility Banner */}
-            <div className="p-4 bg-gradient-to-r from-rose-50 to-purple-50 rounded-2xl border border-rose-100 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-500 to-purple-600 text-white flex items-center justify-center font-bold text-sm shadow-md shadow-rose-500/20">
-                  {user.compatibilityScore}%
+            {/* Header info */}
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">
+                  {user.name}, {user.age}
+                </h3>
+                {user.verified && (
+                  <span className="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 text-xs px-2.5 py-0.5 rounded-full font-bold border border-emerald-200">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Estudante Verificado 🇦🇴</span>
+                  </span>
+                )}
+              </div>
+
+              <div className="space-y-1 text-xs sm:text-sm text-slate-600">
+                <div className="flex items-center gap-1.5 font-medium text-slate-800">
+                  <BookOpen className="w-4 h-4 text-purple-500" />
+                  <span>{user.occupation}</span>
+                  {user.companyOrCollege && (
+                    <span className="text-slate-400 font-normal">· {user.companyOrCollege}</span>
+                  )}
                 </div>
-                <div>
-                  <h4 className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-rose-500" />
-                    <span>Alta Afinidade Detectada</span>
-                  </h4>
-                  <p className="text-[11px] text-slate-600">
-                    {user.compatibilityHighlights?.join(' · ') || 'Gostos culturais e valores alinhados'}
-                  </p>
+                <div className="flex items-center gap-1.5 text-slate-500">
+                  <MapPin className="w-4 h-4 text-pink-500" />
+                  <span>{user.location} · a {user.distanceKm} km de ti</span>
                 </div>
               </div>
             </div>
 
-            {/* Profession & College */}
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-sm text-slate-700">
-                <Briefcase className="w-4 h-4 text-slate-400" />
-                <span className="font-medium">{user.occupation}</span>
+            {/* Compatibility Highlights */}
+            {user.compatibilityHighlights && user.compatibilityHighlights.length > 0 && (
+              <div className="p-3.5 rounded-2xl bg-gradient-to-r from-purple-50 to-pink-50/60 border border-purple-100 space-y-1.5">
+                <span className="text-[11px] font-bold text-pink-900 flex items-center gap-1.5">
+                  <Heart className="w-3.5 h-3.5 text-pink-600 fill-pink-600" />
+                  <span>Porque têm química de casal:</span>
+                </span>
+                <ul className="text-xs text-purple-950 space-y-1 font-medium">
+                  {user.compatibilityHighlights.map((highlight, idx) => (
+                    <li key={idx} className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-pink-500 shrink-0" />
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              {user.companyOrCollege && (
-                <div className="flex items-center gap-2 text-sm text-slate-600">
-                  <GraduationCap className="w-4 h-4 text-slate-400" />
-                  <span>{user.companyOrCollege}</span>
-                </div>
-              )}
+            )}
+
+            {/* Vibe goal */}
+            <div className="p-3.5 rounded-2xl bg-pink-50/40 border border-pink-100 flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-pink-100 text-pink-700 flex items-center justify-center shrink-0">
+                <Heart className="w-4 h-4 fill-pink-500 text-pink-500" />
+              </div>
+              <div>
+                <span className="text-[11px] text-pink-900 font-semibold block">O que procura no Conecta Namoro:</span>
+                <span className="text-xs font-bold text-slate-900">{user.relationshipGoalLabel}</span>
+              </div>
             </div>
 
-            {/* Biography */}
-            <div className="pt-2 border-t border-slate-100">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
-                Sobre mim
+            {/* Bio */}
+            <div>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-purple-900/60 mb-2">
+                Sobre Mim
               </h4>
-              <p className="text-sm text-slate-700 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed bg-purple-50/20 p-3 rounded-2xl border border-purple-50">
                 {user.bio}
               </p>
             </div>
 
-            {/* Relationship goal badge */}
-            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200/80 flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center">
-                <Flame className="w-4 h-4" />
-              </div>
-              <div>
-                <div className="text-[11px] text-slate-400 font-medium">Buscando no Conecta:</div>
-                <div className="text-xs font-bold text-slate-900">{user.relationshipGoalLabel}</div>
-              </div>
-            </div>
-
             {/* Interests */}
-            <div className="pt-2 border-t border-slate-100">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
-                Interesses & Paixões
+            <div>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-purple-900/60 mb-2">
+                Interesses & Hobbies
               </h4>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {user.interests.map((interest) => (
                   <span
                     key={interest}
-                    className="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-800 text-xs font-medium border border-slate-200/60"
+                    className="px-3 py-1 rounded-xl bg-purple-50 text-purple-800 text-xs font-medium border border-purple-100"
                   >
                     {interest}
                   </span>
@@ -200,47 +202,65 @@ export const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
               </div>
             </div>
 
-            {/* Lifestyle */}
+            {/* Youth Lifestyle info */}
             {user.lifestyle && (
-              <div className="pt-2 border-t border-slate-100">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
-                  Estilo de Vida
+              <div className="pt-2 border-t border-purple-50">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-purple-900/60 mb-3">
+                  No Dia a Dia ✨
                 </h4>
                 <div className="grid grid-cols-2 gap-2 text-xs">
-                  {user.lifestyle.zodiac && (
-                    <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-slate-700">
-                      <span className="text-[10px] text-slate-400 block">Signo</span>
-                      <span className="font-semibold">{user.lifestyle.zodiac}</span>
+                  {user.lifestyle.favoriteSong && (
+                    <div className="p-2.5 rounded-2xl bg-white border border-purple-100 text-slate-700 flex items-center gap-2">
+                      <Music className="w-3.5 h-3.5 text-purple-500 shrink-0" />
+                      <div>
+                        <span className="text-[10px] text-slate-400 block font-medium">Música no Loop</span>
+                        <span className="font-semibold text-slate-800 truncate block">{user.lifestyle.favoriteSong}</span>
+                      </div>
                     </div>
                   )}
-                  {user.lifestyle.height && (
-                    <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-slate-700">
-                      <span className="text-[10px] text-slate-400 block">Altura</span>
-                      <span className="font-semibold">{user.lifestyle.height}</span>
+                  {user.lifestyle.studyArea && (
+                    <div className="p-2.5 rounded-2xl bg-white border border-purple-100 text-slate-700 flex items-center gap-2">
+                      <BookOpen className="w-3.5 h-3.5 text-sky-500 shrink-0" />
+                      <div>
+                        <span className="text-[10px] text-slate-400 block font-medium">Curso / Área</span>
+                        <span className="font-semibold text-slate-800 truncate block">{user.lifestyle.studyArea}</span>
+                      </div>
                     </div>
                   )}
-                  {user.lifestyle.exercise && (
-                    <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-slate-700">
-                      <span className="text-[10px] text-slate-400 block">Exercício</span>
-                      <span className="font-semibold">{user.lifestyle.exercise}</span>
-                    </div>
-                  )}
-                  {user.lifestyle.drinking && (
-                    <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-slate-700">
-                      <span className="text-[10px] text-slate-400 block">Bebida</span>
-                      <span className="font-semibold">{user.lifestyle.drinking}</span>
+                  {user.lifestyle.sports && (
+                    <div className="p-2.5 rounded-2xl bg-white border border-purple-100 text-slate-700 flex items-center gap-2">
+                      <Compass className="w-3.5 h-3.5 text-pink-500 shrink-0" />
+                      <div>
+                        <span className="text-[10px] text-slate-400 block font-medium">Desporto</span>
+                        <span className="font-semibold text-slate-800 truncate block">{user.lifestyle.sports}</span>
+                      </div>
                     </div>
                   )}
                   {user.lifestyle.pets && (
-                    <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-slate-700">
-                      <span className="text-[10px] text-slate-400 block">Animais</span>
-                      <span className="font-semibold">{user.lifestyle.pets}</span>
+                    <div className="p-2.5 rounded-2xl bg-white border border-purple-100 text-slate-700 flex items-center gap-2">
+                      <Smile className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                      <div>
+                        <span className="text-[10px] text-slate-400 block font-medium">Animais</span>
+                        <span className="font-semibold text-slate-800 truncate block">{user.lifestyle.pets}</span>
+                      </div>
+                    </div>
+                  )}
+                  {user.lifestyle.zodiac && (
+                    <div className="p-2.5 rounded-2xl bg-white border border-purple-100 text-slate-700 flex items-center gap-2">
+                      <Sparkles className="w-3.5 h-3.5 text-purple-400 shrink-0" />
+                      <div>
+                        <span className="text-[10px] text-slate-400 block font-medium">Signo</span>
+                        <span className="font-semibold text-slate-800 truncate block">{user.lifestyle.zodiac}</span>
+                      </div>
                     </div>
                   )}
                   {user.lifestyle.languages && (
-                    <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-slate-700">
-                      <span className="text-[10px] text-slate-400 block">Idiomas</span>
-                      <span className="font-semibold">{user.lifestyle.languages.join(', ')}</span>
+                    <div className="p-2.5 rounded-2xl bg-white border border-purple-100 text-slate-700 flex items-center gap-2">
+                      <Smile className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                      <div>
+                        <span className="text-[10px] text-slate-400 block font-medium">Idiomas</span>
+                        <span className="font-semibold text-slate-800 truncate block">{user.lifestyle.languages.join(', ')}</span>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -248,10 +268,10 @@ export const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
             )}
 
             {/* Report/Block Button */}
-            <div className="pt-4 border-t border-slate-100 text-center">
+            <div className="pt-4 border-t border-purple-50 text-center">
               <button
                 onClick={() => onOpenReport(user)}
-                className="text-xs text-slate-400 hover:text-rose-600 transition-colors inline-flex items-center gap-1.5 cursor-pointer font-medium"
+                className="text-xs text-slate-400 hover:text-purple-600 transition-colors inline-flex items-center gap-1.5 cursor-pointer font-medium"
               >
                 <Flag className="w-3.5 h-3.5" />
                 <span>Denunciar ou bloquear este perfil</span>
@@ -263,27 +283,27 @@ export const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
         </div>
 
         {/* Sticky Action Footer */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-white via-white/95 to-transparent border-t border-slate-100 flex items-center justify-center gap-6">
+        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-white via-white/95 to-transparent border-t border-purple-50 flex items-center justify-center gap-6">
           <button
             onClick={() => { onPass(user); onClose(); }}
-            className="w-14 h-14 rounded-full bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:bg-slate-50 flex items-center justify-center shadow-lg active:scale-95 transition-all cursor-pointer"
+            className="w-13 h-13 rounded-3xl bg-white text-slate-500 border border-purple-100 hover:border-slate-300 hover:bg-slate-50 flex items-center justify-center shadow-md active:scale-95 transition-all cursor-pointer"
             title="Passar"
           >
-            <XCircle className="w-7 h-7 text-slate-400 hover:text-slate-600" />
+            <X className="w-6 h-6 text-slate-400 hover:text-slate-600" />
           </button>
 
           <button
             onClick={() => { onSuperLike(user); onClose(); }}
-            className="w-12 h-12 rounded-full bg-white text-blue-500 border border-blue-200 hover:border-blue-300 hover:bg-blue-50 flex items-center justify-center shadow-lg active:scale-95 transition-all cursor-pointer"
-            title="Super Like"
+            className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-500 to-pink-500 text-white shadow-md shadow-pink-400/25 hover:scale-105 flex items-center justify-center active:scale-95 transition-all cursor-pointer"
+            title="Super Crush! 💘"
           >
-            <Star className="w-6 h-6 fill-blue-500 text-blue-500" />
+            <Star className="w-5 h-5 fill-white text-white" />
           </button>
 
           <button
             onClick={() => { onLike(user); onClose(); }}
-            className="w-14 h-14 rounded-full bg-gradient-to-tr from-rose-500 to-rose-600 text-white flex items-center justify-center shadow-xl shadow-rose-500/30 hover:scale-105 active:scale-95 transition-all cursor-pointer"
-            title="Curtir"
+            className="w-14 h-14 rounded-3xl bg-gradient-to-tr from-pink-500 via-rose-500 to-purple-600 text-white flex items-center justify-center shadow-lg shadow-pink-500/30 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+            title="Dar Match / Curtir 💕"
           >
             <Heart className="w-7 h-7 fill-white text-white" />
           </button>

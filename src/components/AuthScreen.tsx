@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  Flame, 
+  Sparkles, 
   Lock, 
   Mail, 
   User, 
@@ -31,10 +31,10 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
   // Form State
   const [name, setName] = useState('Adilson Manuel');
   const [email, setEmail] = useState('adilson.manuel@exemplo.ao');
-  const [password, setPassword] = useState('segredo123');
-  const [birthDate, setBirthDate] = useState('1998-05-14');
+  const [password, setPassword] = useState('vibes2026');
+  const [birthDate, setBirthDate] = useState('2005-05-14');
   const [gender, setGender] = useState<'feminino' | 'masculino' | 'nao-binario'>('masculino');
-  const [relationshipGoal, setRelationshipGoal] = useState<'relacionamento-serio' | 'algo-casual' | 'amizade' | 'nao-sei-ainda'>('relacionamento-serio');
+  const [relationshipGoal, setRelationshipGoal] = useState<string>('namoro-serio');
   const [termsAccepted, setTermsAccepted] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -44,29 +44,29 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
 
     if (mode === 'register') {
       if (!name.trim()) {
-        setErrorMessage('Por favor, informe seu nome completo.');
+        setErrorMessage('Por favor, indica o teu nome.');
         return;
       }
       if (!email.trim() || !email.includes('@')) {
-        setErrorMessage('Por favor, informe um e-mail válido.');
+        setErrorMessage('Por favor, indica um e-mail válido.');
         return;
       }
       if (password.length < 6) {
-        setErrorMessage('A senha deve conter pelo menos 6 caracteres.');
+        setErrorMessage('A palavra-passe deve ter pelo menos 6 caracteres.');
         return;
       }
       if (!termsAccepted) {
-        setErrorMessage('Você deve concordar com os Termos e Políticas de Privacidade.');
+        setErrorMessage('Precisas de aceitar as diretrizes da comunidade.');
         return;
       }
       onSuccess(true); // Goes to Onboarding
     } else {
       if (!email.trim() || !email.includes('@')) {
-        setErrorMessage('Por favor, informe um e-mail válido.');
+        setErrorMessage('Por favor, indica o teu e-mail.');
         return;
       }
       if (!password) {
-        setErrorMessage('Por favor, informe sua senha.');
+        setErrorMessage('Por favor, introduz a tua palavra-passe.');
         return;
       }
       onSuccess(false); // Goes to Discover
@@ -79,9 +79,10 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFAFB] flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative">
-      {/* Background glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-rose-100/60 rounded-full blur-3xl pointer-events-none" />
+    <div className="min-h-screen bg-[#FAF9FD] flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative font-sans">
+      {/* Background glow in soft lavender and pink */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-purple-200/40 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-pink-200/30 rounded-full blur-3xl pointer-events-none" />
 
       {/* Header with logo */}
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center z-10">
@@ -89,61 +90,61 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
           onClick={onBackToLanding}
           className="inline-flex items-center gap-2 group cursor-pointer mb-4"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-500 to-purple-600 flex items-center justify-center text-white shadow-md shadow-rose-500/20 group-hover:scale-105 transition-transform">
-            <Flame className="w-5 h-5 fill-white text-white" />
+          <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-500 via-pink-400 to-sky-400 flex items-center justify-center text-white shadow-md shadow-purple-500/25 group-hover:scale-105 transition-transform">
+            <Sparkles className="w-5 h-5 fill-white text-white" />
           </div>
-          <span className="font-serif-display text-3xl font-bold tracking-tight bg-gradient-to-r from-slate-900 to-rose-600 bg-clip-text text-transparent">
+          <span className="font-display text-3xl font-black tracking-tight bg-gradient-to-r from-purple-600 via-pink-500 to-purple-700 bg-clip-text text-transparent">
             Conecta
           </span>
         </button>
 
-        <h2 className="text-2xl font-bold tracking-tight text-slate-900 font-serif-display">
-          {mode === 'register' ? 'Crie sua conta para começar' : 'Bem-vindo de volta'}
+        <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 font-display">
+          {mode === 'register' ? 'Entra no Conecta Namoro 💕' : 'Bem-vindo de volta! 💖'}
         </h2>
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-xs sm:text-sm text-slate-500">
           {mode === 'register'
-            ? 'Encontre pessoas que compartilham sua essência'
-            : 'Acesse suas conversas e novos matches'}
+            ? 'Cria o teu perfil e encontra o teu crush ideal em Angola'
+            : 'Acede às tuas conversas, crushes e matches românticos'}
         </p>
 
         {/* Tab switch */}
-        <div className="mt-6 p-1 bg-slate-200/80 rounded-xl max-w-xs mx-auto flex items-center">
+        <div className="mt-5 p-1 bg-purple-100/60 rounded-2xl max-w-xs mx-auto flex items-center border border-purple-200/40">
           <button
             type="button"
             onClick={() => { setMode('register'); setErrorMessage(''); }}
-            className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
-              mode === 'register' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-600 hover:text-slate-900'
+            className={`flex-1 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
+              mode === 'register' ? 'bg-white text-purple-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
             }`}
           >
-            Criar Conta
+            Criar Perfil ✨
           </button>
           <button
             type="button"
             onClick={() => { setMode('login'); setErrorMessage(''); }}
-            className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
-              mode === 'login' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-600 hover:text-slate-900'
+            className={`flex-1 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
+              mode === 'login' ? 'bg-white text-purple-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
             }`}
           >
-            Já sou cadastrado
+            Já tenho Conta
           </button>
         </div>
       </div>
 
       {/* Main card */}
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md z-10 px-4 sm:px-0">
-        <div className="bg-white py-8 px-6 shadow-xl shadow-slate-200/50 rounded-3xl border border-slate-200/80 sm:px-10">
+        <div className="bg-white py-8 px-6 shadow-xl shadow-purple-500/5 rounded-3xl border border-purple-100 sm:px-9">
           
           {errorMessage && (
-            <div className="mb-4 p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-700 text-xs flex items-center gap-2">
+            <div className="mb-4 p-3 bg-pink-50 border border-pink-200 rounded-2xl text-pink-700 text-xs flex items-center gap-2">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{errorMessage}</span>
             </div>
           )}
 
           {forgotPasswordSent && (
-            <div className="mb-4 p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 text-xs flex items-center gap-2">
+            <div className="mb-4 p-3 bg-emerald-50 border border-emerald-200 rounded-2xl text-emerald-800 text-xs flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
-              <span>Link de recuperação enviado com sucesso para o e-mail informado!</span>
+              <span>Link de recuperação enviado para o teu e-mail com sucesso!</span>
             </div>
           )}
 
@@ -151,13 +152,13 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
             
             {mode === 'register' && (
               <>
-                {/* Nome completo */}
+                {/* Nome visível */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    Nome completo
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                    Como queres ser chamado? (Nome ou Apelido)
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-purple-400">
                       <User className="w-4 h-4" />
                     </div>
                     <input
@@ -165,20 +166,20 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="Ex: Gabriel Souza"
-                      className="w-full pl-10 pr-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition-all text-slate-900"
+                      placeholder="Ex: Adilson Manuel"
+                      className="w-full pl-10 pr-3.5 py-2.5 text-xs sm:text-sm rounded-2xl border border-purple-100 bg-[#FAF9FD] focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-400/30 focus:border-purple-400 transition-all text-slate-900"
                     />
                   </div>
                 </div>
 
-                {/* Data de nascimento & Gênero em grid */}
+                {/* Data de nascimento & Gênero */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Nascimento
+                    <label className="block text-xs font-bold text-slate-700 mb-1">
+                      Data de nascimento
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-purple-400">
                         <Calendar className="w-4 h-4" />
                       </div>
                       <input
@@ -186,41 +187,41 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                         required
                         value={birthDate}
                         onChange={(e) => setBirthDate(e.target.value)}
-                        className="w-full pl-10 pr-3 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition-all text-slate-900"
+                        className="w-full pl-10 pr-3 py-2.5 text-xs sm:text-sm rounded-2xl border border-purple-100 bg-[#FAF9FD] focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-400/30 focus:border-purple-400 transition-all text-slate-900"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    <label className="block text-xs font-bold text-slate-700 mb-1">
                       Identifico-me como
                     </label>
                     <select
                       value={gender}
                       onChange={(e) => setGender(e.target.value as any)}
-                      className="w-full px-3 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition-all text-slate-900 bg-white"
+                      className="w-full px-3 py-2.5 text-xs sm:text-sm rounded-2xl border border-purple-100 bg-[#FAF9FD] focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-400/30 focus:border-purple-400 transition-all text-slate-900"
                     >
-                      <option value="masculino">Homem</option>
-                      <option value="feminino">Mulher</option>
+                      <option value="masculino">Rapaz / Homem</option>
+                      <option value="feminino">Rapariga / Mulher</option>
                       <option value="nao-binario">Não-binário</option>
                     </select>
                   </div>
                 </div>
 
-                {/* O que você procura */}
+                {/* O que procuras no Conecta */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    O que você procura no Conecta?
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                    Qual é o teu objetivo no Conecta Namoro?
                   </label>
                   <select
                     value={relationshipGoal}
-                    onChange={(e) => setRelationshipGoal(e.target.value as any)}
-                    className="w-full px-3 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition-all text-slate-900 bg-white"
+                    onChange={(e) => setRelationshipGoal(e.target.value)}
+                    className="w-full px-3 py-2.5 text-xs sm:text-sm rounded-2xl border border-purple-100 bg-[#FAF9FD] focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-400/30 focus:border-purple-400 transition-all text-slate-900"
                   >
-                    <option value="relacionamento-serio">Relacionamento sério</option>
-                    <option value="algo-casual">Conexão leve / Sem pressa</option>
-                    <option value="amizade">Novas amizades & afinidades</option>
-                    <option value="nao-sei-ainda">Ainda descobrindo</option>
+                    <option value="namoro-serio">Namoro Sério & Romance 💖</option>
+                    <option value="romance-encontros">Romance & Conexão Romântica 💕</option>
+                    <option value="conhecer-crush">Conhecer Meu Crush & Namorar 💘</option>
+                    <option value="aberto-ao-amor">Aberto ao Amor & Química 🌹</option>
                   </select>
                 </div>
               </>
@@ -228,11 +229,11 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
 
             {/* E-mail */}
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-xs font-bold text-slate-700 mb-1">
                 E-mail
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-purple-400">
                   <Mail className="w-4 h-4" />
                 </div>
                 <input
@@ -240,8 +241,8 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="seu.email@exemplo.com"
-                  className="w-full pl-10 pr-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition-all text-slate-900"
+                  placeholder="o.teu.email@exemplo.ao"
+                  className="w-full pl-10 pr-3.5 py-2.5 text-xs sm:text-sm rounded-2xl border border-purple-100 bg-[#FAF9FD] focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-400/30 focus:border-purple-400 transition-all text-slate-900"
                 />
               </div>
             </div>
@@ -249,21 +250,21 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
             {/* Senha */}
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="block text-xs font-semibold text-slate-700">
-                  Senha
+                <label className="block text-xs font-bold text-slate-700">
+                  Palavra-passe
                 </label>
                 {mode === 'login' && (
                   <button
                     type="button"
                     onClick={handleForgotPassword}
-                    className="text-xs text-rose-600 hover:text-rose-700 font-medium cursor-pointer"
+                    className="text-xs text-purple-600 hover:text-purple-700 font-semibold cursor-pointer"
                   >
-                    Esqueci minha senha
+                    Esqueci a palavra-passe
                   </button>
                 )}
               </div>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-purple-400">
                   <Lock className="w-4 h-4" />
                 </div>
                 <input
@@ -272,32 +273,30 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-10 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition-all text-slate-900"
+                  className="w-full pl-10 pr-10 py-2.5 text-xs sm:text-sm rounded-2xl border border-purple-100 bg-[#FAF9FD] focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-400/30 focus:border-purple-400 transition-all text-slate-900"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 cursor-pointer"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-purple-600 cursor-pointer"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
             </div>
 
-            {/* Termos (no cadastro) */}
+            {/* Termos de Convivência Segura */}
             {mode === 'register' && (
               <div className="pt-1">
-                <label className="flex items-start gap-2 cursor-pointer text-xs text-slate-600">
+                <label className="flex items-start gap-2.5 cursor-pointer text-[11px] text-slate-600">
                   <input
                     type="checkbox"
                     checked={termsAccepted}
                     onChange={(e) => setTermsAccepted(e.target.checked)}
-                    className="mt-0.5 rounded text-rose-600 focus:ring-rose-500 border-slate-300"
+                    className="mt-0.5 rounded-md text-purple-600 focus:ring-purple-500 border-purple-200"
                   />
                   <span>
-                    Tenho mais de 18 anos e concordo com os{' '}
-                    <span className="text-rose-600 underline">Termos de Uso</span> e{' '}
-                    <span className="text-rose-600 underline">Política de Privacidade</span>.
+                    Concordo com as <span className="text-purple-600 font-semibold underline">Diretrizes da Comunidade</span> do Conecta e comprometo-me a manter um espaço respeitoso e livre de assédio.
                   </span>
                 </label>
               </div>
@@ -307,9 +306,9 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
             <div className="pt-2">
               <button
                 type="submit"
-                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-medium shadow-md shadow-rose-500/25 active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-purple-500 via-purple-600 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold shadow-md shadow-purple-500/20 active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer text-sm"
               >
-                <span>{mode === 'register' ? 'Criar conta e continuar' : 'Entrar na minha conta'}</span>
+                <span>{mode === 'register' ? 'Criar meu perfil e continuar ✨' : 'Entrar na minha conta 💜'}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -319,10 +318,10 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-slate-200" />
+                <div className="w-full border-t border-purple-100" />
               </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-white px-3 text-slate-400 font-medium">Ou acesse com</span>
+              <div className="relative flex justify-center text-[11px] uppercase">
+                <span className="bg-white px-3 text-slate-400 font-bold">Ou acede com</span>
               </div>
             </div>
 
@@ -330,7 +329,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
               <button
                 type="button"
                 onClick={() => onSuccess(mode === 'register')}
-                className="w-full flex items-center justify-center gap-2 px-3 py-2.5 border border-slate-200 rounded-xl text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 px-3 py-2.5 border border-purple-100 rounded-2xl text-xs font-bold text-slate-700 hover:bg-purple-50/50 transition-colors cursor-pointer"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -344,7 +343,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
               <button
                 type="button"
                 onClick={() => onSuccess(mode === 'register')}
-                className="w-full flex items-center justify-center gap-2 px-3 py-2.5 border border-slate-200 rounded-xl text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 px-3 py-2.5 border border-purple-100 rounded-2xl text-xs font-bold text-slate-700 hover:bg-purple-50/50 transition-colors cursor-pointer"
               >
                 <svg className="w-4 h-4 fill-slate-900" viewBox="0 0 24 24">
                   <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.63-.78 1.05-1.87.93-2.97-1 .04-2.14.67-2.8 1.44-.58.67-1.09 1.77-.96 2.84 1.12.09 2.2-.53 2.83-1.31z"/>
@@ -357,24 +356,24 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
           <div className="mt-6 text-center text-xs text-slate-500">
             {mode === 'register' ? (
               <p>
-                Já possui uma conta?{' '}
+                Já tens uma conta?{' '}
                 <button
                   type="button"
                   onClick={() => setMode('login')}
-                  className="font-semibold text-rose-600 hover:text-rose-700 underline cursor-pointer"
+                  className="font-bold text-purple-600 hover:text-purple-700 underline cursor-pointer"
                 >
-                  Entrar agora
+                  Entrar aqui
                 </button>
               </p>
             ) : (
               <p>
-                Ainda não tem conta no Conecta?{' '}
+                Ainda não fazes parte?{' '}
                 <button
                   type="button"
                   onClick={() => setMode('register')}
-                  className="font-semibold text-rose-600 hover:text-rose-700 underline cursor-pointer"
+                  className="font-bold text-purple-600 hover:text-purple-700 underline cursor-pointer"
                 >
-                  Cadastre-se grátis
+                  Cria o teu perfil grátis
                 </button>
               </p>
             )}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { UserProfile } from '../types';
 import { X, Camera, Plus, Trash2, Check, Sparkles } from 'lucide-react';
-import { ALL_INTERESTS_LIST, heroCoupleImg } from '../data/mockData';
+import { ALL_INTERESTS_LIST, heroYouthFriendsImg } from '../data/mockData';
 
 interface EditProfileModalProps {
   isOpen: boolean;
@@ -70,13 +70,18 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/70 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="bg-white rounded-3xl max-w-xl w-full shadow-2xl border border-slate-200/80 overflow-hidden flex flex-col max-h-[92vh]">
+      <div className="bg-white rounded-3xl max-w-xl w-full shadow-2xl border border-purple-100 overflow-hidden flex flex-col max-h-[92vh]">
         
         {/* Header */}
-        <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
-          <h3 className="font-serif-display text-lg font-bold text-slate-900">
-            Editar Meu Perfil
-          </h3>
+        <div className="px-6 py-4 border-b border-purple-50 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center">
+              <Sparkles className="w-4 h-4" />
+            </div>
+            <h3 className="font-display text-lg font-bold text-slate-900">
+              Editar o Meu Perfil
+            </h3>
+          </div>
           <button
             onClick={onClose}
             className="p-1.5 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
@@ -91,13 +96,13 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
           {/* Photos Management */}
           <div>
             <label className="block text-xs font-semibold text-slate-700 mb-2">
-              Fotos do Perfil (Arraste ou gerencie)
+              Fotos de Perfil (Mostra o teu dia a dia saudável ✨)
             </label>
             <div className="grid grid-cols-3 gap-3">
               {photos.map((src, index) => (
                 <div
                   key={index}
-                  className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-slate-200 shadow-sm group"
+                  className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-purple-100 shadow-xs group"
                 >
                   <img
                     src={src}
@@ -105,7 +110,7 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-2 left-2 bg-slate-900/80 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+                  <div className="absolute top-2 left-2 bg-purple-900/80 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
                     {index === 0 ? 'Capa' : `#${index + 1}`}
                   </div>
                   {photos.length > 1 && (
@@ -124,10 +129,9 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
               {photos.length < 6 && (
                 <div
                   onClick={() => {
-                    // Add photo using imported asset
-                    setPhotos([...photos, heroCoupleImg]);
+                    setPhotos([...photos, heroYouthFriendsImg]);
                   }}
-                  className="aspect-[3/4] rounded-2xl border-2 border-dashed border-slate-300 hover:border-rose-400 bg-slate-50 flex flex-col items-center justify-center cursor-pointer text-slate-400 hover:text-rose-600 p-2 text-center transition-all"
+                  className="aspect-[3/4] rounded-2xl border-2 border-dashed border-purple-200 hover:border-purple-400 bg-purple-50/40 flex flex-col items-center justify-center cursor-pointer text-purple-400 hover:text-purple-600 p-2 text-center transition-all"
                 >
                   <Plus className="w-6 h-6 mb-1" />
                   <span className="text-[11px] font-medium">+ Adicionar Foto</span>
@@ -146,7 +150,7 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-slate-900"
+                className="w-full px-3 py-2 text-xs rounded-xl border border-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-400 text-slate-900 bg-white"
               />
             </div>
             <div>
@@ -157,33 +161,35 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
                 type="number"
                 value={age}
                 onChange={(e) => setAge(Number(e.target.value))}
-                className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-slate-900"
+                className="w-full px-3 py-2 text-xs rounded-xl border border-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-400 text-slate-900 bg-white"
               />
             </div>
           </div>
 
-          {/* Occupation & Company */}
+          {/* Occupation & College */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Profissão
+                O que fazes / Curso
               </label>
               <input
                 type="text"
                 value={occupation}
                 onChange={(e) => setOccupation(e.target.value)}
-                className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-slate-900"
+                placeholder="Ex: Estudante de Engenharia"
+                className="w-full px-3 py-2 text-xs rounded-xl border border-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-400 text-slate-900 bg-white"
               />
             </div>
             <div>
               <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Empresa ou Faculdade
+                Escola / Faculdade
               </label>
               <input
                 type="text"
                 value={companyOrCollege}
                 onChange={(e) => setCompanyOrCollege(e.target.value)}
-                className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-slate-900"
+                placeholder="Ex: Universidade Agostinho Neto"
+                className="w-full px-3 py-2 text-xs rounded-xl border border-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-400 text-slate-900 bg-white"
               />
             </div>
           </div>
@@ -191,34 +197,35 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
           {/* Location */}
           <div>
             <label className="block text-xs font-semibold text-slate-700 mb-1">
-              Localização atual
+              Localização em Angola
             </label>
             <input
               type="text"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-slate-900"
+              placeholder="Ex: Talatona, Luanda"
+              className="w-full px-3 py-2 text-xs rounded-xl border border-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-400 text-slate-900 bg-white"
             />
           </div>
 
           {/* Bio */}
           <div>
             <label className="block text-xs font-semibold text-slate-700 mb-1">
-              Biografia
+              Sobre mim (Conta as tuas paixões, séries e músicas)
             </label>
             <textarea
               rows={3}
               value={bio}
               onChange={(e) => setBio(e.target.value)}
               maxLength={350}
-              className="w-full p-3 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-slate-900 resize-none"
+              className="w-full p-3 text-xs rounded-xl border border-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-400 text-slate-900 resize-none bg-white"
             />
           </div>
 
           {/* O que Procura */}
           <div>
             <label className="block text-xs font-semibold text-slate-700 mb-1">
-              O que você procura no Conecta
+              O que procuras no Conecta Namoro
             </label>
             <select
               value={relationshipGoal}
@@ -226,28 +233,28 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
                 const val = e.target.value as any;
                 setRelationshipGoal(val);
                 const labels: Record<string, string> = {
-                  'relacionamento-serio': 'Relacionamento sério',
-                  'algo-casual': 'Conexão leve & casual',
-                  'amizade': 'Novas amizades',
-                  'nao-sei-ainda': 'Aberto a possibilidades',
+                  'namoro-serio': 'Namoro Sério & Romance 💖',
+                  'romance-encontros': 'Romance & Conexão Romântica 💕',
+                  'conhecer-crush': 'Conhecer Meu Crush & Namorar 💘',
+                  'aberto-ao-amor': 'Aberto ao Amor & Química 🌹',
                 };
-                setRelationshipGoalLabel(labels[val] || 'Relacionamento sério');
+                setRelationshipGoalLabel(labels[val] || 'Namoro Sério & Romance 💖');
               }}
-              className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-slate-900 bg-white"
+              className="w-full px-3 py-2 text-xs rounded-xl border border-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-400 text-slate-900 bg-white"
             >
-              <option value="relacionamento-serio">Relacionamento sério</option>
-              <option value="algo-casual">Conexão leve & casual</option>
-              <option value="amizade">Novas amizades</option>
-              <option value="nao-sei-ainda">Aberto a possibilidades</option>
+              <option value="namoro-serio">Namoro Sério & Romance 💖</option>
+              <option value="romance-encontros">Romance & Conexão Romântica 💕</option>
+              <option value="conhecer-crush">Conhecer Meu Crush & Namorar 💘</option>
+              <option value="aberto-ao-amor">Aberto ao Amor & Química 🌹</option>
             </select>
           </div>
 
           {/* Interests */}
           <div>
             <label className="block text-xs font-semibold text-slate-700 mb-2">
-              Seus interesses ({interests.length}/10)
+              Os teus interesses ({interests.length}/10)
             </label>
-            <div className="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto p-1 border border-slate-100 rounded-xl bg-slate-50/50">
+            <div className="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto p-1.5 border border-purple-50 rounded-2xl bg-purple-50/30">
               {ALL_INTERESTS_LIST.map((interest) => {
                 const isSelected = interests.includes(interest);
                 return (
@@ -255,10 +262,10 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
                     key={interest}
                     type="button"
                     onClick={() => toggleInterest(interest)}
-                    className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer flex items-center gap-1 ${
+                    className={`px-3 py-1 rounded-xl text-xs font-medium transition-all cursor-pointer flex items-center gap-1 ${
                       isSelected
-                        ? 'bg-rose-500 text-white'
-                        : 'bg-white text-slate-600 border border-slate-200 hover:border-slate-300'
+                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-xs'
+                        : 'bg-white text-slate-600 border border-purple-100 hover:border-purple-300'
                     }`}
                   >
                     {isSelected && <Check className="w-3 h-3" />}
@@ -272,27 +279,27 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+        <div className="p-4 bg-purple-50/40 border-t border-purple-100 flex items-center justify-between">
           <button
             type="button"
             onClick={onClose}
             className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-200/60 transition-colors cursor-pointer"
           >
-            Descartar alterações
+            Cancelar
           </button>
 
           <button
             type="button"
             onClick={handleSave}
-            className="px-6 py-2 rounded-xl bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white text-xs font-semibold shadow-md shadow-rose-500/20 transition-all flex items-center gap-1.5 cursor-pointer"
+            className="px-6 py-2.5 rounded-2xl bg-gradient-to-r from-purple-500 via-purple-600 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white text-xs font-bold shadow-md shadow-purple-500/20 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
           >
             {isSaved ? (
               <>
                 <Check className="w-3.5 h-3.5" />
-                <span>Salvo com sucesso!</span>
+                <span>Atualizado com sucesso! ✨</span>
               </>
             ) : (
-              <span>Salvar alterações</span>
+              <span>Guardar alterações ✨</span>
             )}
           </button>
         </div>

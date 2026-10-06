@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { UserProfile, Conversation } from '../types';
 import { 
   Search, 
-  Flame, 
   MessageCircle, 
   Sparkles, 
   Heart, 
   ShieldCheck, 
   ArrowRight,
-  Clock
+  Music,
+  BookOpen
 } from 'lucide-react';
 
 interface MatchesViewProps {
@@ -34,31 +34,35 @@ export const MatchesView: React.FC<MatchesViewProps> = ({
   );
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-6">
+    <div className="max-w-4xl mx-auto px-4 py-6 font-sans">
       
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
-          <h2 className="font-serif-display text-2xl sm:text-3xl font-bold text-slate-900 flex items-center gap-2">
-            <span>Seus Matches</span>
-            <span className="text-sm font-sans bg-rose-100 text-rose-700 font-bold px-2 py-0.5 rounded-full">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-pink-700 bg-pink-100/70 px-3 py-1 rounded-full mb-2 border border-pink-200/50">
+            <Heart className="w-3.5 h-3.5 text-pink-600 fill-pink-600" />
+            <span>Namoro & Encontros em Angola 🇦🇴</span>
+          </div>
+          <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 flex items-center gap-2">
+            <span>Os Teus Matches Românticos</span>
+            <span className="text-xs bg-pink-100 text-pink-700 font-bold px-2.5 py-0.5 rounded-full border border-pink-200">
               {matches.length}
             </span>
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-            Pessoas que você curtiu e que também curtiram você de volta
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            Pessoas especiais que curtiram o teu perfil e com quem deste match mútuo! É hora de marcar o date. 💕
           </p>
         </div>
 
         {/* Search */}
         <div className="relative w-full sm:w-64">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
+          <Search className="w-4 h-4 text-purple-400 absolute left-3.5 top-3" />
           <input
             type="text"
-            placeholder="Buscar por nome ou profissão..."
+            placeholder="Procurar por nome ou curso..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-slate-800"
+            className="w-full pl-9 pr-3 py-2 text-xs rounded-2xl border border-purple-100 bg-white focus:outline-none focus:ring-2 focus:ring-purple-400 text-slate-800 shadow-xs"
           />
         </div>
       </div>
@@ -66,9 +70,15 @@ export const MatchesView: React.FC<MatchesViewProps> = ({
       {/* New Matches Carousel Row */}
       {matches.length > 0 && (
         <div className="mb-8">
-          <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
-            Conexões Recentes
-          </h3>
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-xs font-bold text-purple-900 uppercase tracking-wider flex items-center gap-1.5">
+              <span>Novos Matches</span>
+              <span className="text-[10px] bg-pink-100 text-pink-700 px-2 py-0.2 rounded-full font-semibold">
+                Online para conversar 💕
+              </span>
+            </h3>
+          </div>
+          
           <div className="flex items-center gap-4 overflow-x-auto no-scrollbar pb-2">
             {matches.map((user) => (
               <button
@@ -76,20 +86,20 @@ export const MatchesView: React.FC<MatchesViewProps> = ({
                 onClick={() => onSelectMatch(user)}
                 className="flex flex-col items-center shrink-0 group cursor-pointer"
               >
-                <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-2xl p-0.5 bg-gradient-to-tr from-rose-500 via-pink-500 to-purple-600 shadow-md group-hover:scale-105 transition-all">
+                <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-3xl p-0.5 bg-gradient-to-tr from-purple-500 via-pink-400 to-rose-400 shadow-md group-hover:scale-105 transition-all">
                   <img
                     src={user.photos[0]}
                     alt={user.name}
                     referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover rounded-[14px]"
+                    className="w-full h-full object-cover rounded-[22px]"
                   />
-                  <div className="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-emerald-500 ring-2 ring-white" />
+                  <div className="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-emerald-500 ring-2 ring-white shadow-xs" />
                 </div>
-                <span className="text-xs font-semibold text-slate-800 mt-1.5 truncate max-w-[70px]">
+                <span className="text-xs font-bold text-slate-800 mt-1.5 truncate max-w-[70px]">
                   {user.name.split(' ')[0]}
                 </span>
-                <span className="text-[10px] text-rose-600 font-medium">
-                  {user.compatibilityScore}% afinidade
+                <span className="text-[10px] text-pink-600 font-bold">
+                  {user.compatibilityScore}% química
                 </span>
               </button>
             ))}
@@ -99,13 +109,13 @@ export const MatchesView: React.FC<MatchesViewProps> = ({
 
       {/* Matches Grid List */}
       {filteredMatches.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredMatches.map((user) => {
             const hasExistingChat = conversations.some((c) => c.partnerId === user.id);
             return (
               <div
                 key={user.id}
-                className="bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col justify-between group"
+                className="bg-white rounded-3xl border border-purple-100/80 shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col justify-between group"
               >
                 <div
                   className="relative aspect-[4/3] cursor-pointer"
@@ -117,16 +127,22 @@ export const MatchesView: React.FC<MatchesViewProps> = ({
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-3.5 text-white">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex flex-col justify-end p-4 text-white">
                     <div className="flex items-center gap-1.5">
-                      <span className="font-serif-display text-lg font-bold">
+                      <span className="font-display text-lg font-bold">
                         {user.name}, {user.age}
                       </span>
                       {user.verified && (
                         <ShieldCheck className="w-4 h-4 text-emerald-400" />
                       )}
                     </div>
-                    <span className="text-[11px] text-slate-200">{user.occupation}</span>
+                    <span className="text-[11px] text-pink-200 line-clamp-1">{user.occupation}</span>
+                    {user.lifestyle?.favoriteSong && (
+                      <div className="flex items-center gap-1 text-[10px] text-sky-200 mt-0.5">
+                        <Music className="w-2.5 h-2.5" />
+                        <span className="truncate">{user.lifestyle.favoriteSong}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -135,20 +151,20 @@ export const MatchesView: React.FC<MatchesViewProps> = ({
                     {user.bio}
                   </p>
 
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                  <div className="pt-3 border-t border-purple-50 flex items-center justify-between">
                     <button
                       onClick={() => onOpenDetails(user)}
-                      className="text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
+                      className="text-xs font-semibold text-purple-700 hover:text-purple-900 transition-colors cursor-pointer"
                     >
-                      Ver perfil
+                      Ver perfil 🌹
                     </button>
 
                     <button
                       onClick={() => onSelectMatch(user)}
-                      className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white text-xs font-semibold shadow-sm shadow-rose-500/20 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
+                      className="px-4 py-2 rounded-2xl bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 hover:opacity-95 text-white text-xs font-bold shadow-sm shadow-pink-500/20 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
                     >
                       <MessageCircle className="w-3.5 h-3.5" />
-                      <span>{hasExistingChat ? 'Continuar Chat' : 'Conversar'}</span>
+                      <span>{hasExistingChat ? 'Continuar Chat' : 'Conversar & Date 💬'}</span>
                     </button>
                   </div>
                 </div>
@@ -158,21 +174,21 @@ export const MatchesView: React.FC<MatchesViewProps> = ({
         </div>
       ) : (
         /* Empty State */
-        <div className="bg-white rounded-3xl p-10 border border-slate-200 text-center shadow-sm max-w-md mx-auto my-8">
-          <div className="w-16 h-16 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center mx-auto mb-4">
-            <Flame className="w-8 h-8" />
+        <div className="bg-white rounded-3xl p-10 border border-purple-100 text-center shadow-xs max-w-md mx-auto my-8">
+          <div className="w-16 h-16 rounded-3xl bg-pink-100 text-pink-600 flex items-center justify-center mx-auto mb-4 text-2xl">
+            💖
           </div>
-          <h3 className="font-serif-display text-xl font-bold text-slate-900 mb-2">
+          <h3 className="font-display text-xl font-bold text-slate-900 mb-2">
             Nenhum match com esse filtro
           </h3>
           <p className="text-xs text-slate-500 mb-6">
-            Continue curtindo novos perfis no Descobrir para encontrar pessoas que também gostem de você.
+            Continua a explorar perfis de solteiros no Descobrir para encontrares quem também quer namorar contigo em Luanda.
           </p>
           <button
             onClick={onGoToDiscover}
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-rose-500 to-rose-600 text-white text-xs font-semibold shadow-md shadow-rose-500/25 active:scale-95 transition-all inline-flex items-center gap-2 cursor-pointer"
+            className="px-6 py-3 rounded-2xl bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 text-white text-xs font-bold shadow-md shadow-pink-500/25 active:scale-95 transition-all inline-flex items-center gap-2 cursor-pointer"
           >
-            <span>Ir para o Descobrir</span>
+            <span>Descobrir Crush</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

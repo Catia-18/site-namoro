@@ -10,19 +10,19 @@ export interface UserProfile {
   bio: string;
   photos: string[];
   interests: string[];
-  relationshipGoal: 'relacionamento-serio' | 'algo-casual' | 'amizade' | 'nao-sei-ainda';
+  relationshipGoal: 'namoro-serio' | 'romance-encontros' | 'conhecer-crush' | 'aberto-ao-amor' | string;
   relationshipGoalLabel: string;
   verified: boolean;
   lifestyle: {
-    height?: string;
+    favoriteSong?: string;
+    vibeEmoji?: string;
     zodiac?: string;
-    smoking?: string;
-    drinking?: string;
-    exercise?: string;
+    studyArea?: string;
+    sports?: string;
     pets?: string;
     languages?: string[];
   };
-  compatibilityScore: number; // e.g. 96%
+  compatibilityScore: number; // e.g. 98%
   compatibilityHighlights: string[];
 }
 
