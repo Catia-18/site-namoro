@@ -45,12 +45,12 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState<UserProfile>(CURRENT_USER);
   const [discoverProfiles, setDiscoverProfiles] = useState<UserProfile[]>(DISCOVER_PROFILES);
   const [matches, setMatches] = useState<UserProfile[]>([
-    DISCOVER_PROFILES[0], // Ana
-    DISCOVER_PROFILES[1], // Beatriz
-    DISCOVER_PROFILES[2], // Carolina
+    DISCOVER_PROFILES[0], // Kianda
+    DISCOVER_PROFILES[1], // Weza
+    DISCOVER_PROFILES[2], // Esperança
   ]);
   const [conversations, setConversations] = useState<Conversation[]>(INITIAL_CONVERSATIONS);
-  const [activeConversationId, setActiveConversationId] = useState<string | null>('conv_ana');
+  const [activeConversationId, setActiveConversationId] = useState<string | null>('conv_kianda');
   const [likesReceived, setLikesReceived] = useState<ReceivedLike[]>(INITIAL_LIKES_RECEIVED);
   const [notifications, setNotifications] = useState<AppNotification[]>(INITIAL_NOTIFICATIONS);
   const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS);
@@ -80,8 +80,8 @@ export default function App() {
 
   // Handlers for Discover & Likes
   const handleLike = (user: UserProfile) => {
-    // If liking Ana, Carolina or anyone who liked user, trigger Match modal!
-    const isReciprocal = likesReceived.some((l) => l.user.id === user.id) || user.id === 'user_ana';
+    // If liking Kianda, Esperança or anyone who liked user, trigger Match modal!
+    const isReciprocal = likesReceived.some((l) => l.user.id === user.id) || user.id === 'user_kianda';
 
     if (isReciprocal) {
       // Add to matches if not already there

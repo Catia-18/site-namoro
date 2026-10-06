@@ -128,7 +128,7 @@ export const DiscoverView: React.FC<DiscoverViewProps> = ({
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           <span className="text-xs font-semibold text-slate-700">
-            Descobrindo perto de São Paulo
+            Descobrindo em Luanda e em Angola
           </span>
         </div>
 

@@ -155,7 +155,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-xs font-bold text-slate-900">E-mail cadastrado</div>
-                      <div className="text-[11px] text-slate-500">gabriel.souza@exemplo.com.br</div>
+                      <div className="text-[11px] text-slate-500">adilson.manuel@exemplo.ao</div>
                     </div>
                     <button
                       onClick={showToast}
@@ -168,7 +168,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   <div className="pt-2 border-t border-slate-200/60 flex items-center justify-between">
                     <div>
                       <div className="text-xs font-bold text-slate-900">Telefone verificado</div>
-                      <div className="text-[11px] text-slate-500">+55 (11) 98765-4321</div>
+                      <div className="text-[11px] text-slate-500">+244 923 456 789</div>
                     </div>
                     <span className="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-semibold">
                       Confirmado

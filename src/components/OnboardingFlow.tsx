@@ -12,7 +12,7 @@ import {
   ShieldCheck,
   Plus
 } from 'lucide-react';
-import { ALL_INTERESTS_LIST, userCurrentGabrielImg, profileMateusImg } from '../data/mockData';
+import { ALL_INTERESTS_LIST, userAngolanManImg, profileDamiaoImg } from '../data/mockData';
 
 interface OnboardingFlowProps {
   onComplete: () => void;
@@ -27,23 +27,23 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
 
   // Step 1 state
   const [photos, setPhotos] = useState<string[]>([
-    userCurrentGabrielImg,
-    profileMateusImg,
+    userAngolanManImg,
+    profileDamiaoImg,
   ]);
-  const [name, setName] = useState('Gabriel Souza');
+  const [name, setName] = useState('Adilson Manuel');
   const [age, setAge] = useState(28);
-  const [location, setLocation] = useState('Pinheiros, São Paulo - SP');
+  const [location, setLocation] = useState('Talatona, Luanda - Angola');
   const [occupation, setOccupation] = useState('Arquiteto & Urbanista');
 
   // Step 2 state
   const [bio, setBio] = useState(
-    'Apaixonado por design minimalista, café coado de manhã e finais de semana explorando novas cafeterias e feiras de arte.'
+    'Apaixonado por linhas contemporâneas, o pôr do sol na Ilha de Luanda e finais de semana a descobrir novas cafeterias e boa música ao vivo.'
   );
   const [selectedInterests, setSelectedInterests] = useState<string[]>([
-    'Café Especial',
-    'Artes Visuais',
-    'Gastronomia',
-    'Vinho',
+    'Kizomba & Semba',
+    'Música ao Vivo',
+    'Ilha de Luanda',
+    'Gastronomia Angolana',
     'Fotografia',
   ]);
   const [lookingFor, setLookingFor] = useState('Relacionamento sério');
@@ -368,7 +368,7 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
               <Sparkles className="w-6 h-6 text-rose-500 mx-auto mb-1.5" />
               <h4 className="text-xs font-bold text-slate-900">Seu perfil está 100% pronto!</h4>
               <p className="text-[11px] text-slate-600 mt-0.5">
-                Já selecionamos perfis compatíveis em São Paulo esperando por você.
+                Já selecionamos perfis compatíveis em Luanda esperando por ti.
               </p>
             </div>
           </div>

@@ -37,7 +37,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <div className="lg:col-span-7 flex flex-col items-start text-left">
               <div className="inline-flex items-center gap-2 text-xs font-semibold text-rose-600 mb-6 bg-rose-50 px-3 py-1.5 rounded-full border border-rose-100">
                 <Flame className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
-                <span>O novo padrão para encontros autênticos</span>
+                <span>O novo padrão para encontros autênticos em Angola</span>
               </div>
 
               <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-950 leading-[1.12] mb-6 max-w-2xl">
@@ -81,7 +81,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 <span className="hidden sm:inline text-slate-300">·</span>
                 <div className="flex items-center gap-1.5 font-medium text-slate-700">
                   <Users className="w-4 h-4 text-purple-600" />
-                  <span>+120.000 conexões realizadas</span>
+                  <span>+45.000 solteiros em Angola</span>
                 </div>
               </div>
             </div>
@@ -97,7 +97,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 bg-white">
                   <img
                     src={heroCoupleImg}
-                    alt="Casal feliz conversando em um café ao ar livre"
+                    alt="Casal angolano feliz à beira-mar em Luanda"
                     referrerPolicy="no-referrer"
                     className="w-full h-[380px] sm:h-[440px] object-cover object-center"
                   />
@@ -107,14 +107,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                     <div className="flex items-center gap-2 mb-2">
                       <span className="px-2.5 py-1 rounded-md bg-emerald-500/90 text-white text-xs font-semibold backdrop-blur-sm flex items-center gap-1">
                         <CheckCircle className="w-3 h-3" />
-                        Match de Alta Afinidade · 96%
+                        Match de Alta Afinidade · 97%
                       </span>
                     </div>
                     <h3 className="font-serif-display text-xl sm:text-2xl font-bold">
-                      Mateus & Ana
+                      Adilson & Kianda
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-200 mt-1">
-                      Conectados há 8 meses por afinidade em arquitetura, arte contemporânea e gastronomia artesanal.
+                      Conectados há 8 meses em Luanda por afinidade em arte, arquitetura e pôr do sol na Ilha.
                     </p>
                   </div>
                 </div>
@@ -125,8 +125,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                     <Heart className="w-5 h-5 fill-white" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-slate-900">Novo Match mútuo!</div>
-                    <div className="text-[11px] text-slate-500">Ambos amam café especial e trilhas</div>
+                    <div className="text-xs font-bold text-slate-900">Novo Match em Luanda!</div>
+                    <div className="text-[11px] text-slate-500">Ambos amam Kizomba e café no Miramar</div>
                   </div>
                 </div>
               </div>
@@ -278,16 +278,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   ))}
                 </div>
                 <p className="text-sm text-slate-700 italic leading-relaxed mb-6">
-                  "Depois de anos frustrada com apps em que ninguém queria nada com nada, no Conecta dei match com o Marcelo. Desde o primeiro café percebemos que queríamos construir um futuro com os mesmos valores."
+                  "Depois de tantas desilusões em redes sociais, no Conecta encontrei o Mauro. Desde o primeiro café na Ilha de Luanda percebemos que partilhávamos dos mesmos valores de família e ambições de vida."
                 </p>
               </div>
               <div className="pt-4 border-t border-slate-200/80 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-rose-200 text-rose-700 font-bold flex items-center justify-center text-sm">
-                  J&M
+                  Y&M
                 </div>
                 <div>
-                  <h5 className="text-xs font-bold text-slate-900">Juliana & Marcelo</h5>
-                  <p className="text-[11px] text-slate-500">Namorando há 1 ano e 3 meses · São Paulo</p>
+                  <h5 className="text-xs font-bold text-slate-900">Yara & Mauro</h5>
+                  <p className="text-[11px] text-slate-500">Namorando há 1 ano e 3 meses · Luanda</p>
                 </div>
               </div>
             </div>
@@ -301,16 +301,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   ))}
                 </div>
                 <p className="text-sm text-slate-700 italic leading-relaxed mb-6">
-                  "O índice de compatibilidade parecia bom demais pra ser verdade, mas foi 100% preciso. Gostamos dos mesmos livros, mesmos restaurantes e o senso de humor bateu na primeira piada."
+                  "O índice de afinidade foi 100% certeiro. Partilhamos o amor pela boa música de Semba, leitura e projetos com impacto. Hoje estamos noivos e muito felizes!"
                 </p>
               </div>
               <div className="pt-4 border-t border-slate-200/80 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-purple-200 text-purple-700 font-bold flex items-center justify-center text-sm">
-                  C&R
+                  T&K
                 </div>
                 <div>
-                  <h5 className="text-xs font-bold text-slate-900">Camila & Rodrigo</h5>
-                  <p className="text-[11px] text-slate-500">Noivos há 5 meses · Curitiba</p>
+                  <h5 className="text-xs font-bold text-slate-900">Tchissola & Kelson</h5>
+                  <p className="text-[11px] text-slate-500">Noivos há 5 meses · Benguela</p>
                 </div>
               </div>
             </div>
@@ -324,16 +324,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   ))}
                 </div>
                 <p className="text-sm text-slate-700 italic leading-relaxed mb-6">
-                  "A tranquilidade de saber que todas as pessoas ali são verificadas muda completamente a postura. A conversa flui com respeito, sem joguinhos infantis."
+                  "A tranquilidade de saber que todas as pessoas são verificadas por selfie transmite uma enorme segurança. As conversas fluem com respeito mútuo e sinceridade."
                 </p>
               </div>
               <div className="pt-4 border-t border-slate-200/80 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-emerald-200 text-emerald-700 font-bold flex items-center justify-center text-sm">
-                  T&F
+                  N&H
                 </div>
                 <div>
-                  <h5 className="text-xs font-bold text-slate-900">Thiago & Fernando</h5>
-                  <p className="text-[11px] text-slate-500">Morando juntos há 2 anos · Rio de Janeiro</p>
+                  <h5 className="text-xs font-bold text-slate-900">Nádia & Hélder</h5>
+                  <p className="text-[11px] text-slate-500">Juntos há 2 anos · Lubango</p>
                 </div>
               </div>
             </div>
@@ -425,9 +425,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           <div className="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-slate-500 gap-4">
             <p>Conecta é um produto digital fictício desenvolvido como demonstração de alta fidelidade para apresentações.</p>
             <div className="flex items-center gap-4">
-              <span>Português (Brasil)</span>
+              <span>Português (Angola) 🇦🇴</span>
               <span>·</span>
-              <span>São Paulo, Brasil</span>
+              <span>Luanda, Angola</span>
             </div>
           </div>
         </div>

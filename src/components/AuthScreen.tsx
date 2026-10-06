@@ -29,8 +29,8 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
   const [forgotPasswordSent, setForgotPasswordSent] = useState(false);
 
   // Form State
-  const [name, setName] = useState('Gabriel Souza');
-  const [email, setEmail] = useState('gabriel.souza@exemplo.com.br');
+  const [name, setName] = useState('Adilson Manuel');
+  const [email, setEmail] = useState('adilson.manuel@exemplo.ao');
   const [password, setPassword] = useState('segredo123');
   const [birthDate, setBirthDate] = useState('1998-05-14');
   const [gender, setGender] = useState<'feminino' | 'masculino' | 'nao-binario'>('masculino');

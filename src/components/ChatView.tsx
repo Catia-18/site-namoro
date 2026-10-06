@@ -61,10 +61,10 @@ export const ChatView: React.FC<ChatViewProps> = ({
       setIsTyping(false);
       const partnerName = activeConversation.partner.name.split(' ')[0];
       const replies = [
-        `Com certeza, Gabriel! Eu concordo totalmente. Vamos combinar um café essa semana?`,
-        `Nossa, que interessante! Adoro pessoas com essa mesma sensibilidade para detalhes.`,
-        `Haha adorei! Essa é uma ótima ideia. Qual dia da semana fica melhor para você?`,
-        `Que legal saber disso! Também tenho um carinho enorme por aquele cantinho da cidade.`,
+        `Com certeza, Adilson! Concordo totalmente contigo. Vamos marcar um café esta semana?`,
+        `Que bom saber disso! Adoro pessoas com essa sensibilidade e bom gosto por Luanda.`,
+        `Haha adorei! É uma excelente ideia. Qual dia da semana fica melhor para ti?`,
+        `Que fixe saber disso! Também tenho um carinho enorme por aquele cantinho à beira-mar.`,
       ];
       const randomReply = replies[Math.floor(Math.random() * replies.length)];
       onSendMessage(activeConversation.id, `[${partnerName}]: ${randomReply}`);
